@@ -68,3 +68,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+// Menu Burger
+const burgerMenu = document.getElementById('burger-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+
+// Vérifie l'état du menu au chargement de la page
+document.addEventListener("DOMContentLoaded", () => {
+    const isMenuOpen = localStorage.getItem('menuOpen') === 'true'; // Récupère l'état du menu
+    if (isMenuOpen) {
+        mobileMenu.classList.remove('hidden'); // Ouvre le menu
+    } else {
+        mobileMenu.classList.add('hidden'); // Ferme le menu
+    }
+});
+
+// Lorsque l'utilisateur clique sur le burger, on affiche/masque le menu mobile
+burgerMenu.addEventListener('click', () => {
+    const isMenuCurrentlyOpen = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden'); // Affiche ou cache le menu mobile
+
+    // Enregistre l'état du menu dans le localStorage
+    localStorage.setItem('menuOpen', !isMenuCurrentlyOpen);
+});
+
+// Fermer le menu burger lorsque l'utilisateur clique sur un lien
+const menuLinks = document.querySelectorAll('#mobile-menu a');
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden'); // Cache le menu
+        localStorage.setItem('menuOpen', 'false'); // Mémorise que le menu est fermé
+    });
+});
