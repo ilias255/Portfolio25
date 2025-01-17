@@ -592,6 +592,10 @@ video {
   position: fixed;
 }
 
+.relative {
+  position: relative;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -888,7 +892,7 @@ video {
   transition-duration: 300ms;
 }
 
-/* Glitch effect */
+/* effet flottant sur mon nom */
 
 .glitch-span {
   display: inline-block;
@@ -922,7 +926,7 @@ video {
   }
 }
 
-/* Glow effect for cursor */
+/* css du curseur */
 
 #cursor {
   width: 20px;
@@ -935,6 +939,66 @@ video {
   pointer-events: none;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
   transition: transform 0.05s linear;
+}
+
+@keyframes glitch-animation {
+  0% {
+    transform: translate(0, 0);
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 15px cyan;
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+    text-shadow: -2px 2px 5px cyan, 2px -2px 10px cyan;
+  }
+
+  40% {
+    transform: translate(2px, -2px);
+    text-shadow: 2px -2px 5px cyan, -2px 2px 10px cyan;
+  }
+
+  60% {
+    transform: translate(-2px, -2px);
+    text-shadow: -2px -2px 5px cyan, 2px 2px 10px cyan;
+  }
+
+  80% {
+    transform: translate(2px, 2px);
+    text-shadow: 2px 2px 5px cyan, -2px -2px 10px cyan;
+  }
+
+  100% {
+    transform: translate(0, 0);
+    text-shadow: 0 0 5px cyan, 0 0 10px cyan, 0 0 15px cyan;
+  }
+}
+
+#typewriter {
+  font-size: 2rem;
+  font-weight: bold;
+  animation: glitch-animation 1s infinite;
+  color: cyan;
+  text-align: center;
+}
+
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Effet de zoom sur les projets */
+
+.projet {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projet:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.4);
 }
 
 .hover\:rounded-md:hover {
@@ -997,5 +1061,7 @@ video {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+
 
 
